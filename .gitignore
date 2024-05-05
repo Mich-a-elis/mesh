@@ -1,0 +1,7 @@
+# Build directories
+build/
+
+# Editor and OS things
+.vscode
+compile_commands.json
+.cache

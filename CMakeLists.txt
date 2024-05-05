@@ -28,8 +28,22 @@ else(OPENMP_FOUND)
   message("OpenMP not fbjhound.")
 endif(OPENMP_FOUND)
 
-### Recurse to the source code
-add_subdirectory(src)
+SET(SOURCE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/src/")
+SET(SRCS
+  ${SOURCE_ROOT}/mesh.cpp
+  ${SOURCE_ROOT}/meshio.cpp
+  ${SOURCE_ROOT}/vect.cpp
+)
+
+SET(INCLUDE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/include/")
+SET(HEADERS
+  ${INCLUDE_ROOT}/mesh.h
+  ${INCLUDE_ROOT}/vect.h
+)
+
+add_library(mesh ${SRCS} ${HEADERS})
+
+target_include_directories(mesh PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 # install
 install(
